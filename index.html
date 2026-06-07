@@ -58,15 +58,12 @@
       color: #93c5fd;
       white-space: nowrap;
     }
-    .header-tagline a {
-      color: #93c5fd;
-      text-decoration: none;
-    }
+    .header-tagline a { color: #93c5fd; text-decoration: none; }
     .header-tagline a:hover { color: #fff; }
     nav {
       display: flex;
       align-items: center;
-      gap: .25rem;
+      gap: .15rem;
       flex-wrap: wrap;
       justify-content: flex-end;
     }
@@ -97,10 +94,7 @@
       align-items: center;
     }
     @media (max-width: 768px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-        padding: 3rem 1.5rem;
-      }
+      .hero-inner { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
       .hero-image { display: none; }
     }
     .hero-text h1 {
@@ -134,18 +128,10 @@
       overflow: hidden;
       box-shadow: 0 20px 60px rgba(0,0,0,.3);
     }
-    .hero-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+    .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     /* ── Main ────────────────────────────────────── */
-    main {
-      flex: 1;
-      padding: 3rem 2rem;
-    }
+    main { flex: 1; padding: 3rem 2rem; }
     .container { max-width: 1100px; margin: 0 auto; }
 
     .section-title {
@@ -160,10 +146,9 @@
     /* ── Cards grid ──────────────────────────────── */
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: 1rem;
     }
-
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -176,16 +161,13 @@
       gap: .6rem;
       transition: box-shadow .15s, border-color .15s, transform .15s;
     }
-    .card:hover {
+    .card:not(.coming-soon):hover {
       border-color: var(--accent);
       box-shadow: 0 4px 20px rgba(14,165,233,.15);
       transform: translateY(-2px);
     }
-    .card.coming-soon {
-      opacity: .5;
-      cursor: default;
-      pointer-events: none;
-    }
+    .card.coming-soon { cursor: default; pointer-events: none; }
+
     .card-icon {
       width: 40px; height: 40px;
       border-radius: 9px;
@@ -209,24 +191,72 @@
     .card-title { font-size: .95rem; font-weight: 700; }
     .card-desc  { font-size: .825rem; color: var(--muted); line-height: 1.5; flex: 1; }
     .card-footer { font-size: .78rem; font-weight: 600; color: var(--primary); }
-    .card.coming-soon .card-footer { color: var(--muted); }
-
-    /* external link cards */
     .card.external .card-footer { color: var(--accent); }
+
+    /* blurred coming-soon content */
+    .card.coming-soon .blur-content {
+      filter: blur(5px);
+      user-select: none;
+      pointer-events: none;
+      opacity: .6;
+    }
 
     .divider { margin: 2.5rem 0 2rem; border: none; border-top: 1px solid var(--border); }
 
     /* ── Footer ──────────────────────────────────── */
     footer {
-      border-top: 1px solid var(--border);
-      background: var(--surface);
-      padding: 1.25rem 2rem;
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--muted);
+      background: #0d1b35;
+      color: #94a3b8;
+      padding: 2.5rem 2rem;
+      font-size: 0.78rem;
+      line-height: 1.7;
     }
-    footer a { color: var(--primary); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .footer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .75rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .footer-brand {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -.01em;
+    }
+    .footer-brand span { color: #60a5fa; }
+    .footer-links {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color .15s;
+    }
+    .footer-links a:hover { color: #fff; }
+    .footer-disclaimer {
+      color: #64748b;
+      font-size: 0.73rem;
+      line-height: 1.6;
+    }
+    .footer-disclaimer p + p { margin-top: .75rem; }
+    .footer-copy {
+      color: #475569;
+      font-size: 0.72rem;
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding-top: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -236,9 +266,8 @@
       <a class="logo" href="/">cromatografia<span>.com.ar</span></a>
       <span class="header-tagline">Un proyecto de <a href="https://www.agsanalitica.com" target="_blank" rel="noopener">AGS Analítica</a></span>
       <nav>
-        <a href="/usp467/">Solventes USP &lt;467&gt;</a>
         <a href="https://www.agsanalitica.com" target="_blank" rel="noopener">AGS Analítica</a>
-        <a href="https://www.agsanalitica.com/soporte" target="_blank" rel="noopener">Soporte técnico</a>
+        <a href="https://www.agsanalitica.com/es/soporte-tecnico" target="_blank" rel="noopener">Soporte técnico</a>
         <a href="https://www.viales.com.ar" target="_blank" rel="noopener">viales.com.ar</a>
       </nav>
     </div>
@@ -252,7 +281,7 @@
         <a class="hero-cta" href="/usp467/">Ver solventes USP &lt;467&gt; →</a>
       </div>
       <div class="hero-image">
-        <img src="/Hero para cromatografia_com_ar.jpg" alt="Equipos de cromatografía: HPLC Agilent, GC Agilent, generador Peak Scientific, Bruker nanoElute 2" />
+        <img src="/Hero para cromatografia_com_ar.jpg" alt="Equipos de cromatografía en laboratorio" />
       </div>
     </div>
   </section>
@@ -267,32 +296,35 @@
           <div class="card-icon">⚗️</div>
           <span class="card-tag tag-live">Disponible</span>
           <div class="card-title">Solventes Residuales USP &lt;467&gt;</div>
-          <div class="card-desc">64 solventes con clase, PDE, límite en ppm y CAS. Buscá por nombre o filtrar por clase.</div>
+          <div class="card-desc">64 solventes con clase, PDE, límite en ppm y CAS. Buscá por nombre o filtrá por clase.</div>
           <div class="card-footer">Abrir herramienta →</div>
         </a>
 
         <div class="card coming-soon">
           <div class="card-icon">📊</div>
           <span class="card-tag tag-soon">Próximamente</span>
-          <div class="card-title">Calculadora de dilución HPLC</div>
-          <div class="card-desc">Diluciones en serie, concentración de estándares y preparación de fases móviles.</div>
-          <div class="card-footer">Próximamente</div>
+          <div class="blur-content">
+            <div class="card-title">Calculadora de dilución HPLC</div>
+            <div class="card-desc">Diluciones en serie, concentración de estándares y preparación de fases móviles para cromatografía líquida.</div>
+          </div>
         </div>
 
         <div class="card coming-soon">
           <div class="card-icon">🧪</div>
           <span class="card-tag tag-soon">Próximamente</span>
-          <div class="card-title">Límites USP &lt;232&gt; / &lt;233&gt;</div>
-          <div class="card-desc">Impurezas elementales según ICH Q3D. Búsqueda por elemento y vía de administración.</div>
-          <div class="card-footer">Próximamente</div>
+          <div class="blur-content">
+            <div class="card-title">Límites USP &lt;232&gt; / &lt;233&gt;</div>
+            <div class="card-desc">Impurezas elementales según ICH Q3D. Búsqueda por elemento y vía de administración.</div>
+          </div>
         </div>
 
         <div class="card coming-soon">
           <div class="card-icon">📐</div>
           <span class="card-tag tag-soon">Próximamente</span>
-          <div class="card-title">Validación de métodos analíticos</div>
-          <div class="card-desc">LOD/LOQ, linealidad, recuperación y precisión según ICH Q2(R2).</div>
-          <div class="card-footer">Próximamente</div>
+          <div class="blur-content">
+            <div class="card-title">Validación de métodos analíticos</div>
+            <div class="card-desc">LOD/LOQ, linealidad, recuperación y precisión según ICH Q2(R2).</div>
+          </div>
         </div>
 
       </div>
@@ -306,11 +338,11 @@
           <div class="card-icon">🏢</div>
           <span class="card-tag tag-link">AGS Analítica</span>
           <div class="card-title">Sobre nosotros</div>
-          <div class="card-desc">Representantes de Agilent, Knauer, Bruker y JAS en Argentina. Soluciones en cromatografía y espectrometría de masas.</div>
+          <div class="card-desc">Representantes de Bruker, Joint Analytical Systems, Peak Scientific y DataApex en Argentina.</div>
           <div class="card-footer">agsanalitica.com →</div>
         </a>
 
-        <a class="card external" href="https://www.agsanalitica.com/soporte" target="_blank" rel="noopener">
+        <a class="card external" href="https://www.agsanalitica.com/es/soporte-tecnico" target="_blank" rel="noopener">
           <div class="card-icon">🔧</div>
           <span class="card-tag tag-link">AGS Analítica</span>
           <div class="card-title">Soporte técnico</div>
@@ -332,7 +364,28 @@
   </main>
 
   <footer>
-    <p>cromatografia.com.ar &mdash; Un proyecto de <a href="https://www.agsanalitica.com" target="_blank" rel="noopener">AGS Analítica</a></p>
+    <div class="footer-inner">
+
+      <div class="footer-top">
+        <span class="footer-brand">cromatografia<span>.com.ar</span></span>
+        <div class="footer-links">
+          <a href="https://www.agsanalitica.com" target="_blank" rel="noopener">AGS Analítica</a>
+          <a href="https://www.agsanalitica.com/es/soporte-tecnico" target="_blank" rel="noopener">Soporte técnico</a>
+          <a href="https://www.viales.com.ar" target="_blank" rel="noopener">viales.com.ar</a>
+        </div>
+      </div>
+
+      <div class="footer-disclaimer">
+        <p>Las herramientas disponibles en cromatografia.com.ar son de carácter informativo y de referencia. Los resultados obtenidos deben ser verificados por el usuario contra las fuentes regulatorias oficiales vigentes (USP, ICH, ANMAT, etc.) antes de ser utilizados en decisiones técnicas, analíticas o regulatorias. AGS ANALÍTICA S.A. no asume responsabilidad alguna por el uso de la información proporcionada sin la correspondiente verificación.</p>
+        <p>AGILENT®, SHIMADZU®, WATERS®, PERKIN ELMER® y THERMO FISHER® son marcas registradas de sus respectivos propietarios. AGS ANALÍTICA S.A. no es representante ni tiene vinculación comercial alguna con dichas empresas. Los nombres de marcas se mencionan únicamente a los efectos de indicar compatibilidad de productos.</p>
+        <p>AGS ANALÍTICA S.A. cumple con la Ley Nacional de Protección de Datos Personales N° 25.326.</p>
+      </div>
+
+      <div class="footer-copy">
+        &copy; 2025 AGS ANALÍTICA S.A. &mdash; Un proyecto de <a href="https://www.agsanalitica.com" target="_blank" rel="noopener" style="color:#60a5fa;text-decoration:none;">AGS Analítica</a>
+      </div>
+
+    </div>
   </footer>
 
 </body>
